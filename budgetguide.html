@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Guide - How to Travel Sri Lanka on $30/Day | Sri Lanka Budget Trip</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Budget Guide Specific Styles */
+        .budget-hero {
+            background: linear-gradient(rgba(255,152,0,0.85), rgba(255,152,0,0.8)), 
+                        url('images/street-food.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px 80px;
+            margin-top: 70px;
+        }
+        
+        .budget-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .budget-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+        
+        .budget-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Budget Breakdown Section */
+        .budget-breakdown-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .budget-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .budget-category {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .budget-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+        
+        .category-title h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .category-percentage {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 20px 0 10px;
+        }
+        
+        .category-details {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .category-details li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .category-details li:last-child {
+            border-bottom: none;
+        }
+        
+        .item-price {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .money-saving-tip {
+            background: #f0f7f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        /* Daily Budget Tiers */
+        .budget-tiers {
+            padding: 80px 0;
+        }
+        
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .tier-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .tier-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .tier-header {
+            padding: 30px;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .tier-1 .tier-header { background: linear-gradient(135deg, #4CAF50, #2E7D32); }
+        .tier-2 .tier-header { background: linear-gradient(135deg, #2196F3, #1565C0); }
+        .tier-3 .tier-header { background: linear-gradient(135deg, #FF9800, #EF6C00); }
+        
+        .tier-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .tier-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .tier-content {
+            padding: 25px;
+        }
+        
+        .tier-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+        
+        .tier-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tier-features li i {
+            color: var(--secondary-color);
+        }
+        
+        .tier-recommended {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Budget Timeline */
+        .budget-timeline {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 50px auto 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            width: 45%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 60px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 55%;
+            padding-left: 60px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--white);
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 10px;
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -12px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Cost Comparison */
+        .cost-comparison {
+            padding: 80px 0;
+        }
+        
+        .comparison-table {
+            overflow-x: auto;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+        }
+        
+        th {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .cost-cell {
+            font-weight: 600;
+        }
+        
+        .budget-option {
+            color: #4CAF50;
+        }
+        
+        .midrange-option {
+            color: #FF9800;
+        }
+        
+        .luxury-option {
+            color: #F44336;
+        }
+        
+        .savings-tip {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Money Saving Hacks */
+        .saving-hacks {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .hacks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .hack-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .hack-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .hack-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .hack-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .savings-amount {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Budget Planner */
+        .budget-planner {
+            padding: 80px 0;
+        }
+        
+        .planner-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .planner-step {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .planner-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+        
+        .planner-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .planner-input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .planner-input-group input,
+        .planner-input-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .planner-results {
+            background: #f0f7f0;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .total-budget-display {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px !important;
+                padding-right: 20px !important;
+                text-align: left !important;
+            }
+            
+            .timeline-item::before {
+                left: 22px !important;
+            }
+            
+            .budget-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .budget-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .budget-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .planner-container {
+                padding: 20px;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .budget-breakdown {
+                grid-template-columns: 1fr;
+            }
+            
+            .hacks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-pagoda"></i>
+                <span>Sri Lanka</span>BudgetTrip
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Blog</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="budget-guide.html" class="active">Budget Guide</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="budget-hero">
+        <div class="container">
+            <h1>Complete Sri Lanka Budget Travel Guide</h1>
+            <p>Everything you need to know to explore Sri Lanka on $25-35 per day. Real costs, money-saving hacks, and practical tips from experienced budget travelers.</p>
+            <div class="budget-badge">
+                <i class="fas fa-wallet"></i> $25-35 PER DAY
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Breakdown -->
+    <section class="budget-breakdown-section">
+        <div class="container">
+            <h2 class="section-title">Daily Budget Breakdown</h2>
+            <p class="section-subtitle">How $30 per day gets distributed (based on 2024 prices)</p>
+            
+            <div class="budget-breakdown">
+                <!-- Accommodation -->
+                <div class="budget-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <div class="category-title">
+                            <h3>Accommodation</h3>
+                            <p>Where to sleep cheap</p>
+                        </div>
+                    </div>
+                    <div class="category-percentage">40% - $12/day</div>
+                    <ul class="category-details">
+                        <li>Guesthouse (private room) <span class="item-price">$10-15</span></li>
+                        <li>Hostel dorm bed <span class="item-price">$6-10</span></li>
+                        <li>Homestay (with breakfast) <span class="item-price">$8-12</span></li>
+                        <li>Budget hotel <span class="item-price">$12-20</span></li>
+                    </ul>
+                    <div class="money-saving-tip">
+                        <strong>💰 Tip:</strong> Book directly with guesthouses for 10-20% discount. Ask for monthly rates for longer stays.
+                    </div>
+                </div>
+                
+                <!-- Food -->
+                <div class="budget-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="category-title">
+                            <h3>Food & Drinks</h3>
+                            <p>Eat like a local</p>
+                        </div>
+                    </div>
+                    <div class="category-percentage">30% - $9/day</div>
+                    <ul class="category-details">
+                        <li>Local rice & curry meal <span class="item-price">$1.50-3</span></li>
+                        <li>Street food/snacks <span class="item-price">$0.50-2</span></li>
+                        <li>Restaurant meal <span class="item-price">$3-6</span></li>
+                        <li>Bottled water (1.5L) <span class="item-price">$0.30</span></li>
+                        <li>Fresh coconut <span class="item-price">$0.50</span></li>
+                    </ul>
+                    <div class="money-saving-tip">
+                        <strong>🍛 Tip:</strong> Eat at local "hotels" (small restaurants) for authentic food at 1/3 the price of tourist places.
+                    </div>
+                </div>
+                
+                <!-- Transportation -->
+                <div class="budget-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="category-title">
+                            <h3>Transportation</h3>
+                            <p>Getting around cheaply</p>
+                        </div>
+                    </div>
+                    <div class="category-percentage">20% - $6/day</div>
+                    <ul class="category-details">
+                        <li>Local bus (per hour) <span class="item-price">$0.50-1</span></li>
+                        <li>Train (2nd/3rd class) <span class="item-price">$2-10</span></li>
+                        <li>Tuk-tuk (short ride) <span class="item-price">$1-3</span></li>
+                        <li>Scooter rental (per day) <span class="item-price">$8-12</span></li>
+                    </ul>
+                    <div class="money-saving-tip">
+                        <strong>🚌 Tip:</strong> Use PickMe app for fixed-price tuk-tuks. Avoid "meter" tuk-tuks in tourist areas.
+                    </div>
+                </div>
+                
+                <!-- Activities -->
+                <div class="budget-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-hiking"></i>
+                        </div>
+                        <div class="category-title">
+                            <h3>Activities</h3>
+                            <p>Experiences & entry fees</p>
+                        </div>
+                    </div>
+                    <div class="category-percentage">10% - $3/day</div>
+                    <ul class="category-details">
+                        <li>Temple donation <span class="item-price">$0-2</span></li>
+                        <li>National park safari <span class="item-price">$25-40</span></li>
+                        <li>Surfboard rental <span class="item-price">$5-10</span></li>
+                        <li>Museum entry <span class="item-price">$2-5</span></li>
+                    </ul>
+                    <div class="money-saving-tip">
+                        <strong>🎫 Tip:</strong> Many attractions offer SAARC discounts (50% off). Always ask and carry your passport.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Budget Tiers -->
+    <section class="budget-tiers">
+        <div class="container">
+            <h2 class="section-title">Choose Your Budget Level</h2>
+            <p class="section-subtitle">Different spending levels for different travel styles</p>
+            
+            <div class="tiers-grid">
+                <!-- Shoestring Budget -->
+                <div class="tier-card tier-1">
+                    <div class="tier-header">
+                        <h3>Shoestring</h3>
+                        <div class="tier-price">$15-25</div>
+                        <div class="tier-label">PER DAY</div>
+                    </div>
+                    <div class="tier-content">
+                        <ul class="tier-features">
+                            <li><i class="fas fa-check"></i> Hostel dorms or basic guesthouses</li>
+                            <li><i class="fas fa-check"></i> Street food & local meals only</li>
+                            <li><i class="fas fa-check"></i> Public transport (buses/trains)</li>
+                            <li><i class="fas fa-check"></i> Free activities & hiking</li>
+                            <li><i class="fas fa-check"></i> Minimal souvenir shopping</li>
+                            <li><i class="fas fa-check"></i> Water refills, no bottled water</li>
+                        </ul>
+                        <div class="money-saving-tip">
+                            <strong>Perfect for:</strong> Backpackers, students, long-term travelers
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comfortable Budget -->
+                <div class="tier-card tier-2">
+                    <div class="tier-recommended">RECOMMENDED</div>
+                    <div class="tier-header">
+                        <h3>Comfortable</h3>
+                        <div class="tier-price">$25-40</div>
+                        <div class="tier-label">PER DAY</div>
+                    </div>
+                    <div class="tier-content">
+                        <ul class="tier-features">
+                            <li><i class="fas fa-check"></i> Private rooms in guesthouses</li>
+                            <li><i class="fas fa-check"></i> Mix of street food & restaurants</li>
+                            <li><i class="fas fa-check"></i> Some tuk-tuks + public transport</li>
+                            <li><i class="fas fa-check"></i> Paid attractions & some tours</li>
+                            <li><i class="fas fa-check"></i> Occasional splurges</li>
+                            <li><i class="fas fa-check"></i> AC when needed</li>
+                        </ul>
+                        <div class="money-saving-tip">
+                            <strong>Perfect for:</strong> Most travelers, couples, comfort seekers
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Luxury Budget -->
+                <div class="tier-card tier-3">
+                    <div class="tier-header">
+                        <h3>Luxury</h3>
+                        <div class="tier-price">$40-60+</div>
+                        <div class="tier-label">PER DAY</div>
+                    </div>
+                    <div class="tier-content">
+                        <ul class="tier-features">
+                            <li><i class="fas fa-check"></i> Hotels & resorts</li>
+                            <li><i class="fas fa-check"></i> Restaurants & cafes</li>
+                            <li><i class="fas fa-check"></i> Private drivers & taxis</li>
+                            <li><i class="fas fa-check"></i> All paid attractions & tours</li>
+                            <li><i class="fas fa-check"></i> Shopping & souvenirs</li>
+                            <li><i class="fas fa-check"></i> AC everywhere</li>
+                        </ul>
+                        <div class="money-saving-tip">
+                            <strong>Perfect for:</strong> Short vacations, families, luxury travelers
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Timeline -->
+    <section class="budget-timeline">
+        <div class="container">
+            <h2 class="section-title">Budget Planning Timeline</h2>
+            <p class="section-subtitle">When to save and spend for your Sri Lanka trip</p>
+            
+            <div class="timeline">
+                <!-- 3+ Months Before -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">3+ Months Before Trip</div>
+                        <h3>Big Ticket Items</h3>
+                        <p>Save for flights, travel insurance, and vaccinations. Book flights 2-3 months in advance for best prices.</p>
+                        <div class="money-saving-tip">
+                            <strong>Budget:</strong> $500-800 for flights, $50-100 for insurance
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 1 Month Before -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1 Month Before</div>
+                        <h3>Accommodation & Transport</h3>
+                        <p>Book first few nights' accommodation. Research transport options. Get necessary visas.</p>
+                        <div class="money-saving-tip">
+                            <strong>Budget:</strong> $50-100 for initial bookings
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- During Trip -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">During Your Trip</div>
+                        <h3>Daily Expenses</h3>
+                        <p>Stick to your daily budget. Use local ATMs for better rates. Track expenses daily.</p>
+                        <div class="money-saving-tip">
+                            <strong>Daily:</strong> $25-40 for all daily expenses
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Emergency Fund -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Always</div>
+                        <h3>Emergency Fund</h3>
+                        <p>Keep 10-20% of your total budget aside for emergencies, unexpected costs, or special experiences.</p>
+                        <div class="money-saving-tip">
+                            <strong>Recommendation:</strong> $200-500 emergency fund
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cost Comparison -->
+    <section class="cost-comparison">
+        <div class="container">
+            <h2 class="section-title">Cost Comparison: Budget vs Tourist Prices</h2>
+            <p class="section-subtitle">How much you can save by traveling like a local</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item/Service</th>
+                            <th>Budget/Local Price</th>
+                            <th>Tourist Price</th>
+                            <th>Savings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rice & Curry Meal</td>
+                            <td class="cost-cell budget-option">$1.50 - $3</td>
+                            <td class="cost-cell luxury-option">$6 - $12</td>
+                            <td class="cost-cell">Save 60-75%</td>
+                        </tr>
+                        <tr>
+                            <td>Local Bus (1 hour)</td>
+                            <td class="cost-cell budget-option">$0.50 - $1</td>
+                            <td class="cost-cell luxury-option">$10 - $20</td>
+                            <td class="cost-cell">Save 90-95%</td>
+                        </tr>
+                        <tr>
+                            <td>Tuk-tuk Ride (3km)</td>
+                            <td class="cost-cell budget-option">$1 - $2</td>
+                            <td class="cost-cell luxury-option">$4 - $8</td>
+                            <td class="cost-cell">Save 50-75%</td>
+                        </tr>
+                        <tr>
+                            <td>Bottled Water (1.5L)</td>
+                            <td class="cost-cell budget-option">$0.30</td>
+                            <td class="cost-cell luxury-option">$1 - $2</td>
+                            <td class="cost-cell">Save 70-85%</td>
+                        </tr>
+                        <tr>
+                            <td>Guesthouse (per night)</td>
+                            <td class="cost-cell budget-option">$10 - $15</td>
+                            <td class="cost-cell luxury-option">$30 - $60</td>
+                            <td class="cost-cell">Save 65-75%</td>
+                        </tr>
+                        <tr>
+                            <td>Beer at Local Bar</td>
+                            <td class="cost-cell budget-option">$1.50 - $2</td>
+                            <td class="cost-cell luxury-option">$4 - $6</td>
+                            <td class="cost-cell">Save 60-70%</td>
+                        </tr>
+                        <tr>
+                            <td>SIM Card (1 month)</td>
+                            <td class="cost-cell budget-option">$5 - $8</td>
+                            <td class="cost-cell luxury-option">$15 - $25</td>
+                            <td class="cost-cell">Save 60-70%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="money-saving-tip" style="margin-top: 30px; text-align: center;">
+                <strong>💡 Pro Tip:</strong> By traveling like a local, you can easily cut your expenses by 50-70% while having a more authentic experience!
+            </div>
+        </div>
+    </section>
+
+    <!-- Money Saving Hacks -->
+    <section class="saving-hacks">
+        <div class="container">
+            <h2 class="section-title">Top 10 Money Saving Hacks</h2>
+            <p class="section-subtitle">Proven strategies to stretch your budget further</p>
+            
+            <div class="hacks-grid">
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-train"></i>
+                    </div>
+                    <h3>Use 2nd/3rd Class Trains</h3>
+                    <p>Experience the famous scenic trains at a fraction of the cost. 2nd class is comfortable, 3rd class is super cheap and authentic.</p>
+                    <div class="savings-amount">Save 60-80%</div>
+                </div>
+                
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Stay in Homestays</h3>
+                    <p>Homestays are cheaper than hotels and often include breakfast. You get local interaction and authentic Sri Lankan hospitality.</p>
+                    <div class="savings-amount">Save 40-60%</div>
+                </div>
+                
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-utensil-spoon"></i>
+                    </div>
+                    <h3>Eat at Local "Hotels"</h3>
+                    <p>Small local restaurants called "hotels" serve delicious rice and curry for $1.50-3. Look for places filled with locals.</p>
+                    <div class="savings-amount">Save 70% on food</div>
+                </div>
+                
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <h3>Free Hiking Alternatives</h3>
+                    <p>Instead of paying $30 for Sigiriya, hike Pidurangala Rock nearby for $3 with similar views. Many free hiking trails available.</p>
+                    <div class="savings-amount">Save $27 per person</div>
+                </div>
+                
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-app-store-ios"></i>
+                    </div>
+                    <h3>Use PickMe App</h3>
+                    <p>Sri Lanka's version of Uber for tuk-tuks. Fixed prices prevent overcharging. Much cheaper than hailed tuk-tuks in tourist areas.</p>
+                    <div class="savings-amount">Save 30-50% on transport</div>
+                </div>
+                
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3>SAARC Country Discounts</h3>
+                    <p>If you're from India, Pakistan, Bangladesh, etc., you get 50% off at most paid attractions. Always carry your passport.</p>
+                    <div class="savings-amount">Save 50% on attractions</div>
+                </div>
+                
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-bottle-water"></i>
+                    </div>
+                    <h3>Refill Water Bottles</h3>
+                    <p>Many guesthouses have filtered water. Buy one large bottle and refill it. Saves money and reduces plastic waste.</p>
+                    <div class="savings-amount">Save $1-2 daily</div>
+                </div>
+                
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <h3>Travel Overnight</h3>
+                    <p>Take overnight buses or trains for long distances. Saves on accommodation and travel time. Book 2nd class sleeper for comfort.</p>
+                    <div class="savings-amount">Save $10-15 per night</div>
+                </div>
+                
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Visit in Shoulder Season</h3>
+                    <p>April-May and September-October offer good weather with fewer crowds and lower prices. Avoid December-January peak.</p>
+                    <div class="savings-amount">Save 20-40% overall</div>
+                </div>
+                
+                <div class="hack-card">
+                    <div class="hack-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Share Costs</h3>
+                    <p>Travel with a partner or make friends to share accommodation, transport, and sometimes even guide costs.</p>
+                    <div class="savings-amount">Save 25-40% as a pair</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Budget Planner -->
+    <section class="budget-planner">
+        <div class="container">
+            <h2 class="section-title">Personal Budget Planner</h2>
+            <p class="section-subtitle">Calculate your exact Sri Lanka travel budget</p>
+            
+            <div class="planner-container">
+                <!-- Step 1: Trip Duration -->
+                <div class="planner-step">
+                    <div>
+                        <span class="step-number">1</span>
+                        <h3 style="display: inline-block;">Trip Duration</h3>
+                    </div>
+                    <div class="planner-inputs">
+                        <div class="planner-input-group">
+                            <label for="trip-days">Number of Days</label>
+                            <input type="number" id="trip-days" min="1" max="90" value="14">
+                        </div>
+                        <div class="planner-input-group">
+                            <label for="travelers-count">Number of Travelers</label>
+                            <input type="number" id="travelers-count" min="1" max="10" value="2">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Budget Level -->
+                <div class="planner-step">
+                    <div>
+                        <span class="step-number">2</span>
+                        <h3 style="display: inline-block;">Budget Level</h3>
+                    </div>
+                    <div class="planner-inputs">
+                        <div class="planner-input-group">
+                            <label for="budget-level">Daily Budget Per Person</label>
+                            <select id="budget-level">
+                                <option value="20">Shoestring: $20/day</option>
+                                <option value="30" selected>Comfortable: $30/day</option>
+                                <option value="50">Luxury: $50/day</option>
+                                <option value="custom">Custom Amount</option>
+                            </select>
+                        </div>
+                        <div class="planner-input-group" id="custom-budget-container" style="display: none;">
+                            <label for="custom-budget">Custom Daily Budget ($)</label>
+                            <input type="number" id="custom-budget" min="10" max="200" value="30">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Additional Costs -->
+                <div class="planner-step">
+                    <div>
+                        <span class="step-number">3</span>
+                        <h3 style="display: inline-block;">Additional Costs</h3>
+                    </div>
+                    <div class="planner-inputs">
+                        <div class="planner-input-group">
+                            <label for="flight-cost">Flight Cost (per person)</label>
+                            <input type="number" id="flight-cost" min="0" max="5000" value="600">
+                        </div>
+                        <div class="planner-input-group">
+                            <label for="insurance-cost">Travel Insurance</label>
+                            <input type="number" id="insurance-cost" min="0" max="1000" value="80">
+                        </div>
+                        <div class="planner-input-group">
+                            <label for="visa-cost">Visa Fees</label>
+                            <input type="number" id="visa-cost" min="0" max="500" value="50">
+                        </div>
+                        <div class="planner-input-group">
+                            <label for="extra-budget">Extra Spending Money</label>
+                            <input type="number" id="extra-budget" min="0" max="5000" value="200">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Results -->
+                <div class="planner-results">
+                    <h3>Your Sri Lanka Trip Budget</h3>
+                    <div class="total-budget-display" id="total-budget">$1,540</div>
+                    
+                    <div class="budget-breakdown">
+                        <div class="breakdown-item">
+                            <h4>Daily Expenses</h4>
+                            <p id="daily-expenses">$840</p>
+                        </div>
+                        <div class="breakdown-item">
+                            <h4>Flights</h4>
+                            <p id="flights-cost">$1,200</p>
+                        </div>
+                        <div class="breakdown-item">
+                            <h4>Insurance & Visa</h4>
+                            <p id="fees-cost">$260</p>
+                        </div>
+                        <div class="breakdown-item">
+                            <h4>Extra Money</h4>
+                            <p id="extra-cost">$200</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button id="update-budget" class="btn-primary">Update Calculation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-pagoda"></i>
+                        <span>Sri Lanka</span>BudgetTrip
+                    </a>
+                    <p>Your guide to affordable travel in beautiful Sri Lanka.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="destinations.html">Destinations</a>
+                    <a href="budget-guide.html">Budget Guide</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Budget Resources</h3>
+                    <a href="#">Accommodation Guide</a>
+                    <a href="#">Transport Tips</a>
+                    <a href="#">Food Costs</a>
+                    <a href="#">Free Activities</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> hello@srilankabudgettrip.io</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Travel tips from across Sri Lanka</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SriLankaBudgetTrip.io. All rights reserved.</p>
+                <p>Made with ❤️ for budget travelers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Budget Level Toggle
+            const budgetLevel = document.getElementById('budget-level');
+            const customBudgetContainer = document.getElementById('custom-budget-container');
+            
+            budgetLevel.addEventListener('change', function() {
+                if (this.value === 'custom') {
+                    customBudgetContainer.style.display = 'block';
+                } else {
+                    customBudgetContainer.style.display = 'none';
+                }
+                updateBudgetCalculation();
+            });
+            
+            // Budget Calculator
+            const updateButton = document.getElementById('update-budget');
+            const inputs = document.querySelectorAll('.planner-inputs input, .planner-inputs select');
+            
+            // Add event listeners to all inputs
+            inputs.forEach(input => {
+                input.addEventListener('input', updateBudgetCalculation);
+                input.addEventListener('change', updateBudgetCalculation);
+            });
+            
+            // Initial calculation
+            updateBudgetCalculation();
+            
+            function updateBudgetCalculation() {
+                // Get values
+                const days = parseInt(document.getElementById('trip-days').value) || 14;
+                const travelers = parseInt(document.getElementById('travelers-count').value) || 2;
+                
+                let dailyBudget;
+                if (budgetLevel.value === 'custom') {
+                    dailyBudget = parseInt(document.getElementById('custom-budget').value) || 30;
+                } else {
+                    dailyBudget = parseInt(budgetLevel.value) || 30;
+                }
+                
+                const flightCost = parseInt(document.getElementById('flight-cost').value) || 600;
+                const insuranceCost = parseInt(document.getElementById('insurance-cost').value) || 80;
+                const visaCost = parseInt(document.getElementById('visa-cost').value) || 50;
+                const extraBudget = parseInt(document.getElementById('extra-budget').value) || 200;
+                
+                // Calculate
+                const dailyExpenses = days * dailyBudget * travelers;
+                const totalFlights = flightCost * travelers;
+                const totalFees = (insuranceCost + visaCost) * travelers;
+                const totalExtra = extraBudget * travelers;
+                
+                const totalBudget = dailyExpenses + totalFlights + totalFees + totalExtra;
+                
+                // Update display
+                document.getElementById('daily-expenses').textContent = '$' + dailyExpenses;
+                document.getElementById('flights-cost').textContent = '$' + totalFlights;
+                document.getElementById('fees-cost').textContent = '$' + totalFees;
+                document.getElementById('extra-cost').textContent = '$' + totalExtra;
+                document.getElementById('total-budget').textContent = '$' + totalBudget;
+            }
+            
+            // Budget Breakdown Animation
+            const budgetCategories = document.querySelectorAll('.budget-category');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            budgetCategories.forEach(category => {
+                category.style.opacity = '0';
+                category.style.transform = 'translateY(20px)';
+                category.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(category);
+            });
+            
+            // Timeline Animation
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                if (index % 2 === 0) {
+                    item.style.transform = 'translateX(-50px)';
+                } else {
+                    item.style.transform = 'translateX(50px)';
+                }
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                timelineObserver.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

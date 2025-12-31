@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Best Places to Visit in Sri Lanka on a Budget</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Destinations Specific Styles */
+        .destinations-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px 80px;
+            margin-top: 70px;
+        }
+        
+        .destinations-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .destinations-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+        }
+        
+        .destinations-filters {
+            background: var(--light-bg);
+            padding: 30px 0;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: var(--white);
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+        
+        .destinations-grid {
+            padding: 80px 0;
+        }
+        
+        .destination-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            margin-bottom: 40px;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .destination-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .destination-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .destination-card:hover .destination-image img {
+            transform: scale(1.05);
+        }
+        
+        .destination-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .destination-content {
+            padding: 25px;
+        }
+        
+        .destination-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .destination-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .destination-location i {
+            color: var(--accent-color);
+        }
+        
+        .destination-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .destination-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .destination-budget {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .budget-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .budget-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        .per-day {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .view-details {
+            padding: 10px 25px;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .view-details:hover {
+            background: var(--secondary-color);
+        }
+        
+        .region-section {
+            margin-bottom: 80px;
+        }
+        
+        .region-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .region-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .region-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        /* Budget Calculator */
+        .budget-calculator {
+            background: linear-gradient(135deg, var(--primary-color), #1e3e1e);
+            color: var(--white);
+            padding: 60px 0;
+            margin: 80px 0;
+            border-radius: 10px;
+        }
+        
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .calculator-container h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+        }
+        
+        .calculator-form {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group-calc {
+            margin-bottom: 20px;
+        }
+        
+        .form-group-calc label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group-calc input,
+        .form-group-calc select {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .calculator-result {
+            background: var(--white);
+            color: var(--text-color);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+        
+        .calculator-result h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .total-budget {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        .budget-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .breakdown-item {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        /* Travel Tips */
+        .travel-tips {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .tip-card-large {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .tip-card-large i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .tip-card-large h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .destinations-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .destination-stats {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .destination-budget {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .region-header h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-buttons {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-pagoda"></i>
+                <span>Sri Lanka</span>BudgetTrip
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Blog</a>
+                <a href="destinations.html" class="active">Destinations</a>
+                <a href="budget-guide.html">Budget Guide</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="destinations-hero">
+        <div class="container">
+            <h1>Discover Sri Lanka's Hidden Gems</h1>
+            <p>From misty mountains to golden beaches, explore Sri Lanka's most amazing destinations without breaking the bank.</p>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search destinations (e.g., beaches, hiking, culture)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="destinations-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Destinations</button>
+                <button class="filter-btn" data-filter="beach">Beaches</button>
+                <button class="filter-btn" data-filter="mountain">Mountains</button>
+                <button class="filter-btn" data-filter="cultural">Cultural</button>
+                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                <button class="filter-btn" data-filter="historic">Historic</button>
+                <button class="filter-btn" data-filter="budget">Under $30/day</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Central Province -->
+    <section class="destinations-grid">
+        <div class="container">
+            <div class="region-section">
+                <div class="region-header">
+                    <h2>Central Highlands</h2>
+                    <p>Cool climate, tea plantations, and breathtaking mountain views</p>
+                </div>
+                
+                <div class="posts-grid">
+                    <!-- Ella -->
+                    <div class="destination-card" data-category="mountain budget">
+                        <div class="destination-image">
+                            <img src="images/ella-rock.jpg" alt="Ella, Sri Lanka">
+                            <span class="destination-badge">Budget Friendly</span>
+                        </div>
+                        <div class="destination-content">
+                            <h3>Ella</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Central Province, Badulla District</span>
+                            </div>
+                            <p class="destination-description">A charming mountain town famous for its stunning hikes, waterfalls, and the iconic Nine Arches Bridge. Perfect for nature lovers and adventure seekers.</p>
+                            
+                            <div class="destination-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-hiking"></i>
+                                    <div class="stat-value">4+</div>
+                                    <div class="stat-label">Hiking Trails</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-train"></i>
+                                    <div class="stat-value">Scenic</div>
+                                    <div class="stat-label">Train Route</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-cloud"></i>
+                                    <div class="stat-value">18°C</div>
+                                    <div class="stat-label">Avg Temp</div>
+                                </div>
+                            </div>
+                            
+                            <div class="destination-budget">
+                                <div class="budget-info">
+                                    <h4>Daily Budget</h4>
+                                    <div class="budget-price">$25-35</div>
+                                    <span class="per-day">per person</span>
+                                </div>
+                                <a href="blog-posts/ella-rock-hike.html" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kandy -->
+                    <div class="destination-card" data-category="cultural historic">
+                        <div class="destination-image">
+                            <img src="images/temple.jpg" alt="Temple of the Tooth, Kandy">
+                            <span class="destination-badge">Cultural Hub</span>
+                        </div>
+                        <div class="destination-content">
+                            <h3>Kandy</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Central Province, Cultural Capital</span>
+                            </div>
+                            <p class="destination-description">Sri Lanka's cultural heart, home to the sacred Temple of the Tooth, beautiful botanical gardens, and traditional dance performances.</p>
+                            
+                            <div class="destination-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-umbrella-beach"></i>
+                                    <div class="stat-value">Lake</div>
+                                    <div class="stat-label">Centerpiece</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-landmark"></i>
+                                    <div class="stat-value">UNESCO</div>
+                                    <div class="stat-label">World Heritage</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-temperature-low"></i>
+                                    <div class="stat-value">24°C</div>
+                                    <div class="stat-label">Avg Temp</div>
+                                </div>
+                            </div>
+                            
+                            <div class="destination-budget">
+                                <div class="budget-info">
+                                    <h4>Daily Budget</h4>
+                                    <div class="budget-price">$30-40</div>
+                                    <span class="per-day">per person</span>
+                                </div>
+                                <a href="#" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Nuwara Eliya -->
+                    <div class="destination-card" data-category="mountain cultural">
+                        <div class="destination-image">
+                            <img src="images/tea-plantation.jpg" alt="Nuwara Eliya Tea Plantations">
+                            <span class="destination-badge">Little England</span>
+                        </div>
+                        <div class="destination-content">
+                            <h3>Nuwara Eliya</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Central Province, Highest City</span>
+                            </div>
+                            <p class="destination-description">Known as "Little England" for its colonial architecture and cool climate. Center of Sri Lanka's tea industry with beautiful plantations to explore.</p>
+                            
+                            <div class="destination-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-mountain"></i>
+                                    <div class="stat-value">1,868m</div>
+                                    <div class="stat-label">Elevation</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-leaf"></i>
+                                    <div class="stat-value">Tea</div>
+                                    <div class="stat-label">Plantations</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-temperature-low"></i>
+                                    <div class="stat-value">16°C</div>
+                                    <div class="stat-label">Avg Temp</div>
+                                </div>
+                            </div>
+                            
+                            <div class="destination-budget">
+                                <div class="budget-info">
+                                    <h4>Daily Budget</h4>
+                                    <div class="budget-price">$28-38</div>
+                                    <span class="per-day">per person</span>
+                                </div>
+                                <a href="#" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cultural Triangle -->
+            <div class="region-section">
+                <div class="region-header">
+                    <h2>Cultural Triangle</h2>
+                    <p>Ancient cities, UNESCO World Heritage Sites, and archaeological wonders</p>
+                </div>
+                
+                <div class="posts-grid">
+                    <!-- Sigiriya -->
+                    <div class="destination-card" data-category="historic cultural">
+                        <div class="destination-image">
+                            <img src="images/sigiriya.jpg" alt="Sigiriya Rock Fortress">
+                            <span class="destination-badge">UNESCO Site</span>
+                        </div>
+                        <div class="destination-content">
+                            <h3>Sigiriya</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Central Province, Matale District</span>
+                            </div>
+                            <p class="destination-description">The ancient rock fortress known as the "Eighth Wonder of the World." Marvel at the Lion's Paw entrance, frescoes, and panoramic views.</p>
+                            
+                            <div class="destination-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-mountain"></i>
+                                    <div class="stat-value">200m</div>
+                                    <div class="stat-label">Height</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-history"></i>
+                                    <div class="stat-value">5th Cent.</div>
+                                    <div class="stat-label">Ancient</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-users"></i>
+                                    <div class="stat-value">Busy</div>
+                                    <div class="stat-label">Popular</div>
+                                </div>
+                            </div>
+                            
+                            <div class="destination-budget">
+                                <div class="budget-info">
+                                    <h4>Daily Budget</h4>
+                                    <div class="budget-price">$35-45</div>
+                                    <span class="per-day">per person</span>
+                                </div>
+                                <a href="blog-posts/sigiriya-budget-guide.html" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dambulla -->
+                    <div class="destination-card" data-category="cultural historic">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1593693397189-882925b6c955" alt="Dambulla Cave Temple">
+                            <span class="destination-badge">Cave Temples</span>
+                        </div>
+                        <div class="destination-content">
+                            <h3>Dambulla</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Central Province, Major City</span>
+                            </div>
+                            <p class="destination-description">Home to the stunning Dambulla Cave Temple complex with over 150 Buddha statues and beautiful murals dating back to the 1st century BC.</p>
+                            
+                            <div class="destination-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-place-of-worship"></i>
+                                    <div class="stat-value">5 Caves</div>
+                                    <div class="stat-label">Temples</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-palette"></i>
+                                    <div class="stat-value">Murals</div>
+                                    <div class="stat-label">Artwork</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-history"></i>
+                                    <div class="stat-value">Ancient</div>
+                                    <div class="stat-label">1st Cent. BC</div>
+                                </div>
+                            </div>
+                            
+                            <div class="destination-budget">
+                                <div class="budget-info">
+                                    <h4>Daily Budget</h4>
+                                    <div class="budget-price">$25-35</div>
+                                    <span class="per-day">per person</span>
+                                </div>
+                                <a href="#" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Polonnaruwa -->
+                    <div class="destination-card" data-category="historic cultural">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1578662990689-eb5da8c4ab59" alt="Polonnaruwa Ancient City">
+                            <span class="destination-badge">Ancient Capital</span>
+                        </div>
+                        <div class="destination-content">
+                            <h3>Polonnaruwa</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>North Central Province</span>
+                            </div>
+                            <p class="destination-description">The second oldest kingdom of Sri Lanka, featuring well-preserved ruins, giant Buddha statues, and ancient irrigation systems.</p>
+                            
+                            <div class="destination-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-bicycle"></i>
+                                    <div class="stat-value">Bike</div>
+                                    <div class="stat-label">Best Way</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-archway"></i>
+                                    <div class="stat-value">Ruins</div>
+                                    <div class="stat-label">Ancient</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-university"></i>
+                                    <div class="stat-value">UNESCO</div>
+                                    <div class="stat-label">Site</div>
+                                </div>
+                            </div>
+                            
+                            <div class="destination-budget">
+                                <div class="budget-info">
+                                    <h4>Daily Budget</h4>
+                                    <div class="budget-price">$30-40</div>
+                                    <span class="per-day">per person</span>
+                                </div>
+                                <a href="#" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Beaches -->
+            <div class="region-section">
+                <div class="region-header">
+                    <h2>Coastal Paradise</h2>
+                    <p>Golden beaches, surfing spots, and coastal adventures</p>
+                </div>
+                
+                <div class="posts-grid">
+                    <!-- Arugam Bay -->
+                    <div class="destination-card" data-category="beach budget">
+                        <div class="destination-image">
+                            <img src="images/beaches.jpg" alt="Arugam Bay Beach">
+                            <span class="destination-badge">Surfing Capital</span>
+                        </div>
+                        <div class="destination-content">
+                            <h3>Arugam Bay</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>East Coast, Ampara District</span>
+                            </div>
+                            <p class="destination-description">Sri Lanka's premier surfing destination with consistent waves, laid-back vibe, and affordable beachside accommodation.</p>
+                            
+                            <div class="destination-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-surfboard"></i>
+                                    <div class="stat-value">Surf</div>
+                                    <div class="stat-label">Best Waves</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div class="stat-value">Dry</div>
+                                    <div class="stat-label">May-Oct</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-wallet"></i>
+                                    <div class="stat-value">Budget</div>
+                                    <div class="stat-label">Friendly</div>
+                                </div>
+                            </div>
+                            
+                            <div class="destination-budget">
+                                <div class="budget-info">
+                                    <h4>Daily Budget</h4>
+                                    <div class="budget-price">$25-35</div>
+                                    <span class="per-day">per person</span>
+                                </div>
+                                <a href="blog-posts/arugam-bay-budget.html" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mirissa -->
+                    <div class="destination-card" data-category="beach wildlife">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1552465011-b4e30bf7349d" alt="Mirissa Beach">
+                            <span class="destination-badge">Whale Watching</span>
+                        </div>
+                        <div class="destination-content">
+                            <h3>Mirissa</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>South Coast, Matara District</span>
+                            </div>
+                            <p class="destination-description">Famous for whale watching, beautiful beaches, and palm-fringed shores. Perfect for relaxing and marine life encounters.</p>
+                            
+                            <div class="destination-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-whale"></i>
+                                    <div class="stat-value">Whales</div>
+                                    <div class="stat-label">Nov-Apr</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-umbrella-beach"></i>
+                                    <div class="stat-value">Beach</div>
+                                    <div class="stat-label">Paradise</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-cocktail"></i>
+                                    <div class="stat-value">Nightlife</div>
+                                    <div class="stat-label">Vibrant</div>
+                                </div>
+                            </div>
+                            
+                            <div class="destination-budget">
+                                <div class="budget-info">
+                                    <h4>Daily Budget</h4>
+                                    <div class="budget-price">$30-45</div>
+                                    <span class="per-day">per person</span>
+                                </div>
+                                <a href="#" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Unawatuna -->
+                    <div class="destination-card" data-category="beach cultural">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f" alt="Unawatuna Beach">
+                            <span class="destination-badge">Family Friendly</span>
+                        </div>
+                        <div class="destination-content">
+                            <h3>Unawatuna</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>South Coast, Galle District</span>
+                            </div>
+                            <p class="destination-description">A crescent-shaped bay with calm waters, perfect for swimming and families. Close to Galle Fort for cultural exploration.</p>
+                            
+                            <div class="destination-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-swimming-pool"></i>
+                                    <div class="stat-value">Calm</div>
+                                    <div class="stat-label">Waters</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-fort-awesome"></i>
+                                    <div class="stat-value">Galle</div>
+                                    <div class="stat-label">Nearby</div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div class="stat-value">Food</div>
+                                    <div class="stat-label">Variety</div>
+                                </div>
+                            </div>
+                            
+                            <div class="destination-budget">
+                                <div class="budget-info">
+                                    <h4>Daily Budget</h4>
+                                    <div class="budget-price">$35-50</div>
+                                    <span class="per-day">per person</span>
+                                </div>
+                                <a href="#" class="view-details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Calculator -->
+    <section class="budget-calculator">
+        <div class="calculator-container">
+            <h2>Trip Budget Calculator</h2>
+            <div class="calculator-form">
+                <div class="form-group-calc">
+                    <label for="destination">Select Destination:</label>
+                    <select id="destination">
+                        <option value="25">Ella ($25-35/day)</option>
+                        <option value="35">Sigiriya ($35-45/day)</option>
+                        <option value="30">Kandy ($30-40/day)</option>
+                        <option value="25">Arugam Bay ($25-35/day)</option>
+                        <option value="30">Mirissa ($30-45/day)</option>
+                        <option value="28">Nuwara Eliya ($28-38/day)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group-calc">
+                    <label for="travelers">Number of Travelers:</label>
+                    <input type="number" id="travelers" min="1" max="10" value="2">
+                </div>
+                
+                <div class="form-group-calc">
+                    <label for="days">Number of Days:</label>
+                    <input type="number" id="days" min="1" max="30" value="7">
+                </div>
+                
+                <div class="form-group-calc">
+                    <label for="accommodation">Accommodation Type:</label>
+                    <select id="accommodation">
+                        <option value="0.8">Budget Hostel/Guesthouse</option>
+                        <option value="1" selected>Mid-range Hotel</option>
+                        <option value="1.5">Luxury Resort</option>
+                    </select>
+                </div>
+                
+                <button id="calculate-btn" class="btn-primary" style="width: 100%;">Calculate Budget</button>
+                
+                <div class="calculator-result" id="result">
+                    <h3>Estimated Trip Cost</h3>
+                    <div class="total-budget" id="total-cost">$490</div>
+                    <p>For <span id="result-travelers">2</span> travelers for <span id="result-days">7</span> days in <span id="result-destination">Ella</span></p>
+                    
+                    <div class="budget-breakdown">
+                        <div class="breakdown-item">
+                            <h4>Accommodation</h4>
+                            <p id="accommodation-cost">$196</p>
+                        </div>
+                        <div class="breakdown-item">
+                            <h4>Food & Drinks</h4>
+                            <p id="food-cost">$140</p>
+                        </div>
+                        <div class="breakdown-item">
+                            <h4>Transport</h4>
+                            <p id="transport-cost">$84</p>
+                        </div>
+                        <div class="breakdown-item">
+                            <h4>Activities</h4>
+                            <p id="activities-cost">$70</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="travel-tips">
+        <div class="container">
+            <h2 class="section-title">Destination Planning Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card-large">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Best Time to Visit</h3>
+                    <p>West & South Coasts: Dec-Apr<br>
+                       East Coast: May-Oct<br>
+                       Hill Country: Year-round<br>
+                       Cultural Sites: Nov-Apr</p>
+                </div>
+                
+                <div class="tip-card-large">
+                    <i class="fas fa-route"></i>
+                    <h3>Suggested Itineraries</h3>
+                    <p>7 Days: Cultural Triangle + Kandy<br>
+                       10 Days: Add Hill Country<br>
+                       14 Days: Include Beaches<br>
+                       Budget: $30-50/day per person</p>
+                </div>
+                
+                <div class="tip-card-large">
+                    <i class="fas fa-train"></i>
+                    <h3>Getting Around</h3>
+                    <p>Trains: Scenic & cheap ($2-10)<br>
+                       Buses: Extensive network ($0.50-5)<br>
+                       Tuk-tuks: Short distances ($1-5)<br>
+                       Rentals: Scooters $8-12/day</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-pagoda"></i>
+                        <span>Sri Lanka</span>BudgetTrip
+                    </a>
+                    <p>Your guide to affordable travel in beautiful Sri Lanka.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="destinations.html">Destinations</a>
+                    <a href="budget-guide.html">Budget Guide</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Regions</h3>
+                    <a href="#">Central Highlands</a>
+                    <a href="#">Cultural Triangle</a>
+                    <a href="#">South Coast</a>
+                    <a href="#">East Coast</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> hello@srilankabudgettrip.io</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Travel tips from across Sri Lanka</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SriLankaBudgetTrip.io. All rights reserved.</p>
+                <p>Made with ❤️ for budget travelers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Destination Filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const destinationCards = document.querySelectorAll('.destination-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Show/hide cards based on filter
+                    destinationCards.forEach(card => {
+                        if (filterValue === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            const categories = card.getAttribute('data-category').split(' ');
+                            if (categories.includes(filterValue)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Budget Calculator
+            const calculateBtn = document.getElementById('calculate-btn');
+            const resultDiv = document.getElementById('result');
+            
+            calculateBtn.addEventListener('click', function() {
+                // Get values
+                const destinationSelect = document.getElementById('destination');
+                const destinationName = destinationSelect.options[destinationSelect.selectedIndex].text.split(' (')[0];
+                const baseCost = parseFloat(destinationSelect.value);
+                const travelers = parseInt(document.getElementById('travelers').value);
+                const days = parseInt(document.getElementById('days').value);
+                const accommodationMultiplier = parseFloat(document.getElementById('accommodation').value);
+                
+                // Calculate costs
+                const accommodationPerDay = baseCost * 0.4 * accommodationMultiplier;
+                const foodPerDay = baseCost * 0.3;
+                const transportPerDay = baseCost * 0.2;
+                const activitiesPerDay = baseCost * 0.1;
+                
+                const totalAccommodation = accommodationPerDay * days * travelers;
+                const totalFood = foodPerDay * days * travelers;
+                const totalTransport = transportPerDay * days * travelers;
+                const totalActivities = activitiesPerDay * days * travelers;
+                const totalCost = totalAccommodation + totalFood + totalTransport + totalActivities;
+                
+                // Update result display
+                document.getElementById('result-travelers').textContent = travelers;
+                document.getElementById('result-days').textContent = days;
+                document.getElementById('result-destination').textContent = destinationName;
+                document.getElementById('total-cost').textContent = '$' + Math.round(totalCost);
+                document.getElementById('accommodation-cost').textContent = '$' + Math.round(totalAccommodation);
+                document.getElementById('food-cost').textContent = '$' + Math.round(totalFood);
+                document.getElementById('transport-cost').textContent = '$' + Math.round(totalTransport);
+                document.getElementById('activities-cost').textContent = '$' + Math.round(totalActivities);
+                
+                // Show result
+                resultDiv.style.display = 'block';
+            });
+            
+            // Initialize calculator with default values
+            calculateBtn.click();
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-box input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                destinationCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('.destination-description').textContent.toLowerCase();
+                    const location = card.querySelector('.destination-location span').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || 
+                        description.includes(searchTerm) || 
+                        location.includes(searchTerm) ||
+                        searchTerm === '') {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
